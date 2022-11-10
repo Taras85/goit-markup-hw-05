@@ -63,11 +63,10 @@
         <div class="overlay-base-baner section">
           <div class="container-base-baner container">
             <h1 class="baner-title">Ефективні рішення для вашого бізнесу</h1>
-            <button type="button" class="baner-btn">Замовити послугу</button>
+            <button type="button" class="baner-btn" data-modal-open>Замовити послугу</button>
           </div>
         </div>
       </section>
-
       <!-- Пріорітети команди -->
       <section class="base-priorities section">
         <div class="container-base-priorities container">
@@ -573,5 +572,13 @@
         </div>
       </div>
     </footer>
+    <div class="backdrop is-hidden" data-modal>
+      <div class="modal">
+        <div></div>
+        <button data-modal-close>Закрити</button>
+      </div>
+    </div>
+
+    <script src="./js/modal.js"></script>
   </body>
 </html>

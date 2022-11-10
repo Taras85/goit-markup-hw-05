@@ -145,10 +145,10 @@ body {
   padding-top: 32px;
   padding-bottom: 32px;
 
-  transition: var(--link-effect) ;
+  transition: var(--link-effect-color);
 }
 
-.site-nav>.nav-item>.current {
+.site-nav > .nav-item > .current {
   color: var(--accent-color-btn);
 }
 .site-nav > .nav-item > .current::after {
@@ -161,7 +161,6 @@ body {
   bottom: 0px;
   background-color: var(--accent-color-btn);
   transform: translateY(1px);
-   
 }
 .header-contacts {
   display: flex;
@@ -174,7 +173,7 @@ body {
   padding-top: 32px;
   padding-bottom: 32px;
   gap: 10px;
-  transition: var(--link-effect);
+  transition: var(--link-effect-color);
 }
 .icon-header-contacts {
   fill: currentColor;
@@ -231,7 +230,33 @@ body {
   border: 1px solid transparent;
   border-radius: 4px;
   cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
+  transition: var(--link-effect-background);
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 99, 71, 0.5);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  min-height: 300px;
+  min-width: 400px;
+  padding: 15px;
+  background-color: #2196f3;
 }
 
 /* Блок наші пріоритети */
@@ -269,10 +294,10 @@ body {
 .container-base-directions {
   --items: 3;
 }
-.directions-item{
+.directions-item {
   position: relative;
 }
-.overlay-directions{
+.overlay-directions {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -281,7 +306,7 @@ body {
   background: rgba(47, 48, 58, 0.8);
   backdrop-filter: (2px);
 }
-.everlay-directions-text{
+.everlay-directions-text {
   font-size: 14px;
   line-height: calc(16 / 14);
   text-align: center;
@@ -289,7 +314,6 @@ body {
   text-transform: uppercase;
   color: var(--background-body-color-font-baner);
 }
-
 
 .directions-title,
 .team-title,
@@ -358,14 +382,12 @@ body {
   height: 100%;
   border-radius: 50%;
   background-color: var(--background-body-color-font-baner);
+  color: var(--icon-color);
 
-
-  /* transition: var(--link-effect-background); */
-  transition: var(--link-effect-color);
+  transition: var(--link-effect-color), var(--link-effect-background);
 }
 .social-icon {
-  fill: var(--icon-color);
-
+  fill: currentColor;
 }
 
 .social-link:hover .social-icon,
@@ -375,8 +397,8 @@ body {
 }
 .social-link:hover,
 .social-link:focus {
- color: var(--background-body-color-font-baner);
   outline: none;
+  color: var(--background-body-color-font-baner);
   background-color: var(--accent-color-btn);
 }
 
@@ -427,7 +449,6 @@ body {
 }
 /* Підвал сайту */
 
-
 footer {
   padding: 0;
   display: flex;
@@ -452,7 +473,6 @@ address {
   line-height: calc(24 / 14);
   letter-spacing: 0.03em;
   color: var(--background-body-color-font-baner);
-
 }
 .contact-footer {
   font-size: 14px;
