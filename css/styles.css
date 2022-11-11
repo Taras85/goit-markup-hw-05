@@ -165,9 +165,9 @@ body {
   width: 100%;
   height: 4px;
   border-radius: 2px;
-  bottom: 0px;
+  bottom: -1px;
   background-color: var(--accent-color-btn);
-  transform: translateY(1px);
+
 }
 .header-contacts {
   display: flex;
@@ -630,6 +630,11 @@ address {
   background-color: var(--team-background-color);
   color: var(--font-color-title-h2-h3);
   cursor: pointer;
+
+  transition: color var(--scheme-effect),
+  background-color var(--scheme-effect),
+  box-shadow var(--scheme-effect),border-radius var(--scheme-effect);
+
 }
 
 /* Блок галереї */
@@ -657,6 +662,10 @@ address {
 .gallery-link {
   display: flex;
   flex-direction: column;
+  transition: background-color var(--scheme-effect),
+  background-color var(--scheme-effect),
+  box-shadow var(--scheme-effect);
+
 }
 .gallery-link:focus,
 .gallery-link:hover {
