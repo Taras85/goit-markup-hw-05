@@ -13,11 +13,11 @@
   --indent-nav: 50px;
   --indent-main: 30px;
   --items: 4;
-  --link-effect-color: color 1250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --link-effect-background: background-color 1250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --border-effect-color: border-color 1250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --modal-visible-form: opacity 1250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --scheme-effect: 1250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* --link-effect-color: color 1250ms cubic-bezier(0.4, 0, 0.2, 1); */
+  /* --link-effect-background: background-color 1250ms cubic-bezier(0.4, 0, 0.2, 1); */
+  /* --border-effect-color: border-color 1250ms cubic-bezier(0.4, 0, 0.2, 1); */
+  /* --modal-visible-form: opacity 1250ms cubic-bezier(0.4, 0, 0.2, 1); */
+  --scheme-effect: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* Reset */
 .visually-hidden {
@@ -152,10 +152,11 @@ body {
   padding-top: 32px;
   padding-bottom: 32px;
 
-  transition: var(--link-effect-color);
+  transition: color var(--scheme-effect);
 }
 
 .site-nav > .nav-item > .current {
+  animation: shake-top 15s var(--scheme-effect) infinite both;
   color: var(--accent-color-btn);
 }
 .site-nav > .nav-item > .current::after {
@@ -180,7 +181,7 @@ body {
   padding-top: 32px;
   padding-bottom: 32px;
   gap: 10px;
-  transition: var(--link-effect-color);
+  transition: color var(--scheme-effect);
 }
 .icon-header-contacts {
   fill: currentColor;
@@ -239,9 +240,9 @@ body {
   cursor: pointer;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
-  transition: var(--link-effect-background);
+  transition: background-color var(--scheme-effect);
 }
-
+/* modal-wondow */
 .backdrop {
   position: fixed;
   top: 0;
@@ -272,7 +273,7 @@ body {
   height: 30px;
   cursor: pointer;
   border-radius: 50%;
-  background-color: #ffffff;
+  background-color: var(--background-body-color-font-baner);
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -293,19 +294,16 @@ body {
   min-width: 400px;
   min-height: 400px;
   padding: 8px;
-  background: #ffffff;
+  background: var(--background-body-color-font-baner);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  /* transition: transform var(--scheme-effect), opcity var(--scheme-effect),
-    transform-origin var(--scheme-effect); */
   transition: transform var(--scheme-effect);
 }
 
 .backdrop.is-hidden .modal {
-  /* opacity: 0; */
-  transform: translateX(50%) translateY(-90%);
-  transform-origin: bottom left;
+transform: skew(-40deg, 60deg) translateX(-80%) translateY(-100%);
+
 }
 
 /* Блок наші пріоритети */
@@ -433,7 +431,7 @@ body {
   background-color: var(--background-body-color-font-baner);
   color: var(--icon-color);
 
-  transition: var(--link-effect-color), var(--link-effect-background);
+  transition: color var(--scheme-effect), background-color var(--scheme-effect);
 }
 .social-icon {
   fill: currentColor;
@@ -476,7 +474,7 @@ body {
   border: 1px solid var(--icon-color);
   border-radius: 4px;
 
-  transition: var(--link-effect-color), var(--border-effect-color);
+  transition: color var(--scheme-effect), border-color var(--scheme-effect);
 }
 
 .partner-link:hover,
@@ -523,7 +521,7 @@ address {
   letter-spacing: 0.03em;
   color: var(--background-body-color-font-baner);
 
-  transition: var(--link-effect-color);
+  transition: color var(--scheme-effect);
 }
 .contact-footer {
   font-size: 14px;
@@ -531,7 +529,7 @@ address {
   letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.6);
 
-  transition: var(--link-effect-color);
+  transition: color var(--scheme-effect);
 }
 .adds-list {
   display: flex;
@@ -578,7 +576,7 @@ address {
   background-color: rgba(255, 255, 255, 0.1);
   color: var(--background-body-color-font-baner);
 
-  transition: var(--link-effect-background);
+  transition: background-color var(--scheme-effect);
 }
 
 .social-footer-link:hover,
@@ -645,6 +643,37 @@ address {
   border-right: 1px solid var(--border-gllery-content);
   border-bottom: 1px solid var(--border-gllery-content);
 }
+
+.overlay-box{
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay-gallery{
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(33, 150, 243, 0.9);
+  user-select: none;
+  transform: translateY(100%);
+  transition:  var(--scheme-effect);
+
+}
+
+.overlay-gallery-text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: calc(28/18);
+    letter-spacing: 0.03em;
+  
+    color: var(--background-body-color-font-baner);
+}
+
 .gallery-title {
   font-weight: 700;
   font-size: 18px;
@@ -664,13 +693,74 @@ address {
   flex-direction: column;
   transition: background-color var(--scheme-effect),
   background-color var(--scheme-effect),
-  box-shadow var(--scheme-effect);
+  box-shadow var(--scheme-effect) ;
 
 }
+
+.gallery-link:hover .overlay-gallery,
+.gallery-link:focus .overlay-gallery{
+      transform: translateY(0);
+}
+
+
 .gallery-link:focus,
 .gallery-link:hover {
   outline: none;
   background-color: var(--background-body-color-font-baner);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+
+}
+
+
+/* Анимація */
+
+@keyframes shake-top {
+
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+    transform-origin: 50% 0;
+  }
+
+  10% {
+    transform: rotate(2deg);
+  }
+
+  20%,
+  40%,
+  60% {
+    transform: rotate(-4deg);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: rotate(4deg);
+  }
+
+  80% {
+    transform: rotate(-2deg);
+  }
+
+  90% {
+    transform: rotate(2deg);
+    transform: rotate(0deg);
+  }
+
+  80% {
+  transform: rotate(-2deg);
+  }
+
+  70%,
+  50%,
+  30% {
+  transform: rotate(4deg);
+  }
+
+  10% {
+  transform: rotate(2deg);
+  }
+
 }
